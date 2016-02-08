@@ -25,7 +25,7 @@ def makedict(states, statevals):
     statecounts = list(filter(isdigit, statevals.rstrip('\n').split(',')))
     lastval = statecounts.pop()
     print("got {0} values: {1}".format(len(statecounts), ','.join(statecounts)))
-    return (lastval, dict(zip(states, statecounts)))
+    return lastval, dict(zip(states, statecounts))
 
 
 file = sys.argv[1]
