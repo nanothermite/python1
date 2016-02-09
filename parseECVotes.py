@@ -25,7 +25,7 @@ def dumpdict(topdict, dicttype):
         candparts = cand.split(' ')
         for state, count in votedict.items():
             print("{0},{1},{2},{3},{4},{5},{6},{7},{8}".format(year, int(year) + 1, int(year) + 5,
-                                                           candparts[0],
+                                                           candparts[0].replace('.', ''),
                                                            "" if len(candparts) == 2 else candparts[1].replace('.', ''),
                                                            candparts[len(candparts) - 1],
                                                            state, count, dicttype))
@@ -95,7 +95,6 @@ mapping = {
     'Wisconsin': 'WI',
     'Wyoming': 'WY'
 }
-states = []
 presDict = {}
 veepDict = {}
 baseYear = 1789
