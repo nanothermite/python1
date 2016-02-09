@@ -24,7 +24,7 @@ def dumpdict(topdict, dicttype):
     for cand, votedict in topdict.items():
         candparts = cand.split(' ')
         for state, count in votedict.items():
-            print("{0},{1},{2},{3},{4},{5},{6},{7},{8}".format(year, int(year) + 1, int(year) + 5,
+            print("{0},{1},{2},{3},{4},{5},{6},{7}".format(int(year) + 1, int(year) + 5,
                                                            candparts[0].replace('.', ''),
                                                            "" if len(candparts) == 2 else candparts[1].replace('.', ''),
                                                            candparts[len(candparts) - 1],
