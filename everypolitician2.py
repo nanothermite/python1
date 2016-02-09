@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Converts our data into CSV files for everypolitician.org,
 # one file for the House and one file for the Senate.
 #
@@ -12,6 +14,7 @@ import sys, csv, argparse
 
 from utils import yaml_load, CURRENT_CONGRESS, states
 
+govtrackdir='/home/hkatz/workspace-nbc/Projects/CPLD/CPD/DATA/govtrack/congress-legislators/'
 
 def run():
     parser = argparse.ArgumentParser(description='handle legis/exec')
@@ -24,11 +27,11 @@ def run():
 
     # Load current legislators.
     if args.inpType == 'leg':
-        data = yaml_load("../legislators-historical.yaml")
+        data = yaml_load("{0}/legislators-current.yaml".format(govtrackdir))
     else:
-        data = yaml_load("../executive.yaml")
+        data = yaml_load("{0}/executive.yaml".format(govtrackdir))
     data_social_media = {}
-    for legislator in yaml_load("../legislators-social-media.yaml"):
+    for legislator in yaml_load("{0}/legislators-social-media.yaml".format(govtrackdir)):
         data_social_media[legislator['id']['bioguide']] = legislator
 
     # Create output files.
@@ -56,6 +59,7 @@ def run():
             "num_terms",
             "party",
             "given_name",
+            "middle_name",
             "family_name",
             "suffix",
             # "sort_name",
@@ -145,6 +149,7 @@ def writeRow(endTerm, legisParty, legisType, legislator, numTerms, startTerm, te
         numTerms,
         legisParty,
         legislator['name'].get('first'),
+        legislator['name'].get('middle') if 'middle' in legislator['name'] else '',
         legislator['name'].get('last'),
         legislator['name'].get('suffix'),
         # build_name(legislator, term, 'sort'),
