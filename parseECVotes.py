@@ -13,7 +13,7 @@ def identity(x):
 
 
 def makedigit(x):
-    return 0 if x == '-' else int(x)
+    return 0 if x == '-' or x == '' else int(x)
 
 
 def isabbrev(x):
