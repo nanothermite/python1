@@ -103,7 +103,7 @@ seenVicePres = False
 
 # get first line to determine states
 states = list(map(toabbrev if int(year) > 1960 else identity,
-                  filter(isabbrev, lines[0].rstrip('\n').split(','))))
+                  filter(isabbrev, lines[0].replace('*', '').rstrip('\n').split(','))))
 
 # scan remaining files for lines beginning with For or "
 quotepattern = re.compile('^,"|^For') if int(year) > 1960 else re.compile('^"')
