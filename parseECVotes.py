@@ -124,7 +124,7 @@ for line in lines:
                     seenVicePres = checkpattern(veeppattern, nameparts[0])
                     seenPres = checkpattern(prezpattern, nameparts[0])
                 candname = nameparts[1].split(',')[0]
-                candvotes = list(map(makedigit, nameparts[2].rstrip('\n').split(',')))
+                candvotes = list(map(makedigit, nameparts[2].replace('*', '').rstrip('\n').split(',')))
                 if seenVicePres:
                     veepDict[candname] = dict(zip(states, candvotes))
                 else:
